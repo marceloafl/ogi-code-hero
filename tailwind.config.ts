@@ -21,7 +21,7 @@ const config: Config = {
       },
       boxShadow: {
         "custom-light": "0px 0px 5px rgba(0, 0, 0, 0.2)",
-        "custom-dark": "0px 0px 10px rgba(0, 0, 0, 0.4)",
+        "custom-dark": "0px 0px 10px rgba(0, 0, 0, 0.8)",
       },
     },
   },

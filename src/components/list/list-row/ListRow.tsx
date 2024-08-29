@@ -1,29 +1,44 @@
 import Image from "next/image";
 import { ptSans } from "@/styles/fonts";
 
-export default function ListRow(character) {
+interface ListRowProps {
+  id: string;
+  name: string;
+  series: string[];
+  events: string[];
+  image: string;
+}
+
+export default function ListRow({
+  id,
+  name,
+  series,
+  events,
+  image,
+}: ListRowProps) {
   return (
     <li
-      className={`${ptSans.className} flex justify-between items-center bg-white w-full h-[88px] px-6 py-5 rounded-lg shadow-custom-light hover:shadow-custom-dark transition-shadow duration-300`}
+      key={id}
+      className="flex justify-between items-center gap-6 bg-white w-full max-h-[88px] px-6 py-5 rounded-lg shadow-custom-light hover:shadow-custom-dark transition-shadow duration-300 cursor-pointer"
     >
       <div className="flex flex-1 items-center gap-6 font-bold">
-        <figure className="bg-red-500 rounded-lg h-12 w-12 relative">
-          <Image src={"/icon-search.svg"} alt="" fill />
+        <figure className="rounded-lg overflow-hidden h-12 w-12 relative">
+          <Image src={image} alt="" fill sizes="3rem" />
         </figure>
-        <p>{character.character.name}</p>
+        <p>{name}</p>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 text-sm">
         <ul>
-          <li>Iron Man: Armor Wars</li>
-          <li>Old Man Hawkeye</li>
-          <li>Fantastic Four Visionaries: Walter Simonson Vol. 1</li>
+          {series.map((serie, index) => (
+            <li key={index}>{serie}</li>
+          ))}
         </ul>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 text-sm">
         <ul>
-          <li>AvX</li>
-          <li>Demon in the Bottle</li>
-          <li>Dynasty M</li>
+          {events.map((event, index) => (
+            <li key={index}>{event}</li>
+          ))}
         </ul>
       </div>
     </li>

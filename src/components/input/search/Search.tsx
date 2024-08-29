@@ -4,10 +4,14 @@ export default function Search({
   label,
   placeholder,
   id,
+  searchTerm,
+  handleOnChange,
 }: {
   label?: string;
   placeholder?: string;
   id: string;
+  searchTerm?: string;
+  handleOnChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <section className="flex flex-col gap-2">
@@ -20,7 +24,9 @@ export default function Search({
           name={`search-${id}`}
           type="text"
           placeholder={placeholder}
+          value={searchTerm ? searchTerm : undefined}
           className="bg-transparent w-full h-full outline-none"
+          onChange={handleOnChange}
         />
         <div className="w-fit p-2 relative">
           <Image src={"/icon-search.svg"} alt="" fill />
