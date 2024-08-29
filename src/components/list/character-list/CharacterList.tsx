@@ -74,8 +74,8 @@ export default function CharacterList() {
                 className={`${ptSans.className} flex justify-between items-center gap-6 px-6 w-full text-xs text-smoke`}
               >
                 <p className="flex-1 text-sm">Personagem</p>
-                <p className="flex-1 text-sm">Séries</p>
-                <p className="flex-1 text-sm">Eventos</p>
+                <p className="md:flex flex-1 text-sm hidden">Séries</p>
+                <p className="md:flex flex-1 text-sm hidden">Eventos</p>
               </div>
 
               <ul className={`${ptSans.className} flex flex-col gap-2`}>

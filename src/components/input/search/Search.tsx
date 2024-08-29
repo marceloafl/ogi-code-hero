@@ -29,7 +29,7 @@ export default function Search({
           onChange={handleOnChange}
         />
         <div className="w-fit p-2 relative">
-          <Image src={"/icon-search.svg"} alt="" fill />
+          <Image src={"/icon-search.svg"} alt="Search" fill />
         </div>
       </div>
     </section>

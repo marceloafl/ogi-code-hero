@@ -1,6 +1,4 @@
-import { getHash } from "./utils";
-
-// const MARVEL_PUBLIC_KEY = process.env.MARVEL_PUBLIC_KEY;
+import { getHash } from "../utils";
 
 const MARVEL_PUBLIC_KEY = "5edcf475d38f8ae1959d64818859fcce";
 

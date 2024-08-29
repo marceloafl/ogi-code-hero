@@ -16,7 +16,9 @@ export default function RootLayout({
     <html lang="en" className={ptSansCaption.className}>
       <body className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow bg-dark-snow px-28 py-8">{children}</main>
+        <main className="flex-grow bg-dark-snow px-4 md:px-28 py-8">
+          {children}
+        </main>
       </body>
     </html>
   );
