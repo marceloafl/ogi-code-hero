@@ -1,7 +1,9 @@
 "use client";
 
+import CharacterMediaSection from "@/components/character/character-media-section/CharacterMediaSection";
+import CharacterTitle from "@/components/character/character-title/CharacterTitle";
+import CharacterSkeleton from "@/components/skeleton/character-skeleton/CharacterSkeleton";
 import { getCharacterById } from "@/services/character-by-id/requests";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export interface PageProps {
@@ -14,7 +16,6 @@ export default function Character({ searchParams }: PageProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const characterId = searchParams?.["id"];
-  const [comics, setComics] = useState([]);
 
   useEffect(() => {
     if (characterId) {
@@ -34,76 +35,19 @@ export default function Character({ searchParams }: PageProps) {
     }
   }, [characterId]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <CharacterSkeleton />;
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="flex flex-col gap-9">
+    <div className="flex flex-col gap-9 bg-white p-8 rounded-lg">
       {character ? (
         <>
-          <div className="flex flex-col gap-8">
-            <div className="flex gap-9 items-center">
-              <figure className="w-20 h-20 rounded-lg overflow-hidden relative flex-shrink-0">
-                {character.thumbnail && (
-                  <Image
-                    src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                    alt={character.name}
-                    fill
-                    sizes="5rem"
-                  />
-                )}
-              </figure>
-              <h1 className="text-4xl font-bold">{character.name}</h1>
-            </div>
-            <p>{character.description}</p>
-          </div>
-          <div className="flex flex-col md:flex-row gap-8">
-            <div className="flex-1 flex flex-col gap-4">
-              <h2 className="text-2xl font-bold">Comics</h2>
-              {character.comics && character.comics.items.length > 0 ? (
-                <ul className="pl-5">
-                  {character.comics.items.map(
-                    (
-                      comic: {
-                        name: string;
-                        resourceURI: string;
-                        thumbnail?: { path: string; extension: string };
-                      },
-                      index: number
-                    ) => (
-                      <li key={index} className="flex items-center gap-4">
-                        {comic.name}
-                      </li>
-                    )
-                  )}
-                </ul>
-              ) : (
-                <p>Este personagem não participou de nenhuma comic.</p>
-              )}
-            </div>
-            <div className="flex-1 flex flex-col gap-4">
-              <h2 className="text-2xl font-bold">Séries</h2>
-              {character.series && character.series.items.length > 0 ? (
-                <ul className="pl-5">
-                  {character.series.items.map(
-                    (
-                      serie: {
-                        name: string;
-                        resourceURI: string;
-                      },
-                      index: number
-                    ) => (
-                      <li key={index} className="flex items-center gap-4">
-                        {serie.name}
-                      </li>
-                    )
-                  )}
-                </ul>
-              ) : (
-                <p>Este personagem não participou de nenhuma série.</p>
-              )}
-            </div>
-          </div>
+          <CharacterTitle
+            name={character.name}
+            description={character.description}
+            thumbnail={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+          />
+          <CharacterMediaSection character={character} />
         </>
       ) : (
         <p>Nenhum personagem encontrado.</p>

@@ -9,8 +9,8 @@ export default function HeaderTitle({
   };
 
   return (
-    <div className="flex items-center justify-between gap-4 text-sm">
-      <div className="flex justify-between gap-2">
+    <div className="flex items-center justify-between gap-2 md:gap-4 text-sm">
+      <div className="flex flex-col md:flex-row justify-between md:gap-2">
         <p className="font-bold">{candidateName}</p>
         <p>Teste de Front-end</p>
       </div>

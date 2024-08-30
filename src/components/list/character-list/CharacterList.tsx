@@ -1,13 +1,20 @@
 "use client";
 
 import ListRow from "@/components/list/list-row/ListRow";
-import ListSkeleton from "@/components/skeleton/ListSkeleton";
+import ListSkeleton from "@/components/skeleton/list-skeleton/ListSkeleton";
 import { getCharacters } from "@/services/characters-api/requests";
 import { useEffect, useState } from "react";
 import { ptSans } from "@/styles/fonts";
 import Pagination from "@/components/pagination/Pagination";
 import Search from "@/components/input/search/Search";
 import useDebounce from "@/hooks/useDebounce";
+import ListTitle, { ListTitleProps } from "../list-title/ListTitle";
+
+const listTitle = [
+  { title: "Personagem", visibleOnMobile: true },
+  { title: "Séries", visibleOnMobile: false },
+  { title: "Eventos", visibleOnMobile: false },
+];
 
 export default function CharacterList() {
   const [characters, setCharacters] = useState([]);
@@ -67,18 +74,11 @@ export default function CharacterList() {
           ))}
         </ul>
       ) : (
-        <section className="flex flex-col gap-2">
+        <section className={`${ptSans.className} flex flex-col gap-2`}>
           {characters.length > 0 ? (
             <>
-              <div
-                className={`${ptSans.className} flex justify-between items-center gap-6 px-6 w-full text-xs text-smoke`}
-              >
-                <p className="flex-1 text-sm">Personagem</p>
-                <p className="md:flex flex-1 text-sm hidden">Séries</p>
-                <p className="md:flex flex-1 text-sm hidden">Eventos</p>
-              </div>
-
-              <ul className={`${ptSans.className} flex flex-col gap-2`}>
+              <ListTitle titles={listTitle} />
+              <ul className="flex flex-col gap-2">
                 {characters.map((character) => (
                   <ListRow
                     key={character.id}

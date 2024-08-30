@@ -10,7 +10,7 @@ export default function ListSkeleton() {
           {Array.from({ length: 3 }).map((_, index) => (
             <li
               key={index}
-              className="bg-gray-200 h-4 w-3/4 mb-2 rounded animate-pulse"
+              className="bg-snow h-4 w-3/4 mb-2 rounded animate-pulse"
             ></li>
           ))}
         </ul>
