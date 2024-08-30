@@ -34,6 +34,7 @@ Access the application at [http://localhost:3000](http://localhost:3000).
 - Cache Implementation: Add caching to reduce server load and improve loading speed.
 - State Management Improvement: Refactor state management to optimize rendering and component updates.
 - Type and Interface Organization: Restructure and standardize interfaces to ensure consistency and ease code maintenance.
+- Additional Test Creation: Develop and include more tests to ensure comprehensive coverage and guarantee system robustness and reliability.
 
 ---
 
@@ -73,3 +74,4 @@ Acesse a aplicação em [http://localhost:3000](http://localhost:3000).
 - Implementação de Cache: Adicionar cache para reduzir a carga no servidor e melhorar a velocidade de carregamento.
 - Melhoria no Gerenciamento de Estado: Refatorar o gerenciamento de estado para otimizar a renderização e a atualização dos componentes.
 - Organização de Tipos e Interfaces: Reestruturar e padronizar as interfaces para garantir consistência e facilitar a manutenção do código.
+- Criação de mais Testes: Desenvolver e incluir mais testes para garantir uma cobertura abrangente e assegurar a robustez e confiabilidade do sistema.
