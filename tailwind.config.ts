@@ -15,6 +15,7 @@ const config: Config = {
         "dark-smoke": "#555555",
         snow: "#F5F5F5",
         "dark-snow": "#E5E5E5",
+        blue: "#5dafff",
         "dark-blue": "#167ABC",
         shadow: "#00000033",
       },

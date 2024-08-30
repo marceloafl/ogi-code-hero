@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import PaginationControlButton from "../button/pagination-control-button/PaginationControlButton";
 
 interface PaginationProps {
   currentPage: number;
@@ -33,39 +34,28 @@ export default function Pagination({
   }, [currentPage, totalPages]);
 
   return (
-    <div className="flex items-center justify-between mt-4 w-fit m-auto">
-      <button
-        onClick={() => onPageChange(1)}
-        disabled={currentPage === 1}
-        className={`${
-          currentPage === 1
-            ? "hidden"
-            : "p-2 rounded-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-        }`}
-      >
-        <p className="h-5 w-5">{"<<"}</p>
-      </button>
-      <button
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-        className={`${
-          currentPage === 1
-            ? "hidden"
-            : "p-2 rounded-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-        }`}
-      >
-        <p className="h-5 w-5">{"<"}</p>
-      </button>
+    <div className="flex items-center justify-between mt-4 m-auto text-sm">
+      <PaginationControlButton
+        label="<<"
+        disable={currentPage === 1}
+        onPageChange={() => onPageChange(1)}
+      />
+
+      <PaginationControlButton
+        label="<"
+        disable={currentPage === 1}
+        onPageChange={() => onPageChange(currentPage - 1)}
+      />
 
       <div className="flex space-x-2">
         {displayedOptions.map((page) => (
           <button
             key={page}
             onClick={() => onPageChange(page)}
-            className={`px-3 py-1 rounded-md ${
+            className={`px-3 py-1 rounded-md border border-solid ${
               page === currentPage
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 hover:bg-gray-300"
+                ? "bg-dark-blue text-white border-dark-blue"
+                : "bg-snow hover:bg-blue text-dark-smoke border-dark-snow hover:text-white"
             }`}
           >
             {page}
@@ -73,28 +63,17 @@ export default function Pagination({
         ))}
       </div>
 
-      <button
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-        className={`${
-          currentPage === totalPages || totalPages === 0
-            ? "hidden"
-            : "p-2 rounded-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-        }`}
-      >
-        <p className="h-5 w-5">{">"}</p>
-      </button>
-      <button
-        onClick={() => onPageChange(totalPages)}
-        disabled={currentPage === totalPages || totalPages === 0}
-        className={`${
-          currentPage === totalPages || totalPages === 0
-            ? "hidden"
-            : "p-2 rounded-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-        }`}
-      >
-        <p className="h-5 w-5">{">>"} </p>
-      </button>
+      <PaginationControlButton
+        label=">"
+        disable={currentPage === totalPages}
+        onPageChange={() => onPageChange(currentPage + 1)}
+      />
+
+      <PaginationControlButton
+        label=">>"
+        disable={currentPage === totalPages}
+        onPageChange={() => onPageChange(totalPages)}
+      />
     </div>
   );
 }

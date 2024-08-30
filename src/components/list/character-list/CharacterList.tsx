@@ -98,13 +98,13 @@ export default function CharacterList() {
           ) : (
             <p className="m-auto">Nenhum personagem encontrado</p>
           )}
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
         </section>
       )}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 }
