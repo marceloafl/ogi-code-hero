@@ -36,7 +36,7 @@ export default function Character({ searchParams }: PageProps) {
     }
   }, [characterId]);
 
-  if (loading) return <CharacterSkeleton />;
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
   return (

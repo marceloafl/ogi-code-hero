@@ -51,12 +51,12 @@ export default function CharacterMedia<T extends Media>({
     fetchMedias();
   }, []);
 
-  if (loading) return <MediaSkeleton />;
-
   return (
     <div className="flex-1 flex flex-col gap-4 bg-white rounded-lg p-4 shadow-custom-light">
       <h2 className="text-2xl font-bold">{title}</h2>
-      {items.length > 0 ? (
+      {loading ? (
+        <MediaSkeleton />
+      ) : items.length > 0 ? (
         <ul className="pl-5 flex flex-col gap-8">
           {items.map((item, index) => (
             <li key={index} className="flex items-center gap-4">

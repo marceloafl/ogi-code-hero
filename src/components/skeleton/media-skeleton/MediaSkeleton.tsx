@@ -4,8 +4,8 @@ export default function MediaSkeleton() {
       <ul className="pl-5 space-y-4">
         {[...Array(5)].map((_, index) => (
           <li key={index} className="flex items-center gap-4 animate-pulse">
-            <div className="bg-gray-300 w-16 h-16 rounded"></div>
-            <div className="bg-gray-300 w-3/4 h-4 rounded"></div>
+            <div className="bg-snow w-16 h-16 rounded"></div>
+            <div className="bg-snow w-3/4 h-4 rounded"></div>
           </li>
         ))}
       </ul>

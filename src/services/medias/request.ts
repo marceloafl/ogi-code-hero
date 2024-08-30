@@ -19,5 +19,7 @@ export async function getMedias(
     const response = await fetch(`${baseUrl}?${params}`);
     const data = response.json();
     return data;
-  } catch {}
+  } catch (error) {
+    console.error(error);
+  }
 }
