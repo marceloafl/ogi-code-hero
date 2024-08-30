@@ -1,17 +1,23 @@
 import CharacterMedia from "../character-media/CharacterMedia";
 
-export default function CharacterMediaSection({ character }) {
+export default function CharacterMediaSection({
+  characterId,
+}: {
+  characterId: string;
+}) {
   return (
     <div className="flex flex-col md:flex-row gap-8">
       <CharacterMedia
         title="Comics"
-        items={character.comics?.items || []}
+        characterId={characterId}
         emptyMessage="Este personagem não participou de nenhuma comic."
+        mediaType="comics"
       />
       <CharacterMedia
         title="Series"
-        items={character.series?.items || []}
+        characterId={characterId}
         emptyMessage="Este personagem não participou de nenhuma série."
+        mediaType="series"
       />
     </div>
   );

@@ -4,6 +4,7 @@ import CharacterMediaSection from "@/components/character/character-media-sectio
 import CharacterTitle from "@/components/character/character-title/CharacterTitle";
 import CharacterSkeleton from "@/components/skeleton/character-skeleton/CharacterSkeleton";
 import { getCharacterById } from "@/services/character-by-id/requests";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export interface PageProps {
@@ -39,19 +40,22 @@ export default function Character({ searchParams }: PageProps) {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="flex flex-col gap-9 bg-white p-8 rounded-lg">
-      {character ? (
-        <>
-          <CharacterTitle
-            name={character.name}
-            description={character.description}
-            thumbnail={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-          />
-          <CharacterMediaSection character={character} />
-        </>
-      ) : (
-        <p>Nenhum personagem encontrado.</p>
-      )}
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-9 p-8 rounded-lg">
+        {character ? (
+          <>
+            <CharacterTitle
+              name={character.name}
+              description={character.description}
+              thumbnail={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+            />
+            <CharacterMediaSection characterId={characterId} />
+          </>
+        ) : (
+          <p>Nenhum personagem encontrado.</p>
+        )}
+      </div>
+      <Link href={"/"}>{"Voltar para página inicial"}</Link>
     </div>
   );
 }

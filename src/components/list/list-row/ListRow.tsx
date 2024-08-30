@@ -28,13 +28,7 @@ export default function ListRow({
       >
         <div className="flex flex-1 items-center gap-6 font-bold">
           <figure className="rounded-lg overflow-hidden h-12 w-12 relative">
-            <Image
-              src={image}
-              alt={name}
-              sizes="3rem"
-              layout="fill"
-              objectFit="cover"
-            />
+            <Image src={image} alt={name} sizes="3rem" fill />
           </figure>
           <p>{name}</p>
         </div>
